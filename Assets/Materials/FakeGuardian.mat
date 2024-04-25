@@ -28,7 +28,7 @@ Material:
     - _BlendOpAlpha: 3
     - _BlendOpColor: 2
     - _CullMode: 2
-    - _GuardianFade: 0
+    - _GuardianFade: 1
     - _GuardianOpen: 0
     - _ZTest: 8
     - _ZWrite: 0

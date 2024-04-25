@@ -55,18 +55,19 @@ public class GridLine : MonoBehaviour
 
     private void GetLineRendererPoints()
     {
+        int layerMask = 1 << LayerMask.NameToLayer("OVRRig");
 
         switch (planeDirectionDir)
         {
             case planeDirection.xPlane:
                 float xOffset = transform.rotation.z;
                 xPointList.Clear(); // Clear the list before adding new points
-                for (float i = 0; i < 360.5; i += 0.5f)
+                for (float i = 0; i < 360.5; i += 0.25f)
                 {
             
                     transform.eulerAngles = new Vector3(0, 0, xOffset + i);
                     RaycastHit hit;
-                    if (Physics.Raycast(transform.position,  transform.right, out hit,Mathf.Infinity))
+                    if (Physics.Raycast(transform.position,  transform.right, out hit,Mathf.Infinity, ~layerMask))
                     {
                         xPointList.Add(hit.point);
                     }
@@ -83,13 +84,13 @@ public class GridLine : MonoBehaviour
                 
                 float yOffset = transform.rotation.y;
                 yPointList.Clear(); // Clear the list before adding new points
-                for (float i = 0; i < 360.5; i += 0.5f)
+                for (float i = 0; i < 360.5; i += 0.25f)
                 {
             
                     transform.eulerAngles = new Vector3(0, yOffset + i, 0);
                     
                     RaycastHit hit;
-                    if (Physics.Raycast(transform.position,  transform.forward, out hit,Mathf.Infinity))
+                    if (Physics.Raycast(transform.position,  transform.forward, out hit,Mathf.Infinity, ~layerMask))
                     {
                         yPointList.Add(hit.point);
                     }
@@ -107,14 +108,14 @@ public class GridLine : MonoBehaviour
                 
                 float zOffset = transform.rotation.x;
                 zPointList.Clear(); // Clear the list before adding new points
-                for (float i = 0; i < 360.5; i += 0.5f)
+                for (float i = 0; i < 360.5; i += 0.25f)
                 {
             
                     transform.eulerAngles = new Vector3(zOffset + i,0, 0);
                     
 
                     RaycastHit hit;
-                    if (Physics.Raycast(transform.position,  transform.forward, out hit,Mathf.Infinity))
+                    if (Physics.Raycast(transform.position,  transform.forward, out hit,Mathf.Infinity, ~layerMask))
                     {
                         zPointList.Add(hit.point);
                     }
