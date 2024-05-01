@@ -151,9 +151,28 @@ public class GridController : MonoBehaviour
     
     public void RemoveGrid()
     {
-        RemoveGridX();
-        RemoveGridY();
-        RemoveGridZ();
+        //RemoveGridX();
+        foreach (var gridLine in gridLineXList)
+        {
+            Debug.Log($"SpawnGrid");
+            Destroy(gridLine);
+        }
+        gridLineXList.Clear();
+       // RemoveGridY();
+        foreach (var gridLine in gridLineYList)
+        {
+            Debug.Log($"SpawnGrid");
+            Destroy(gridLine);
+        }
+        gridLineYList.Clear();
+        
+        //RemoveGridZ();
+        foreach (var gridLine in gridLineZList)
+        {
+            Debug.Log($"SpawnGrid");
+            Destroy(gridLine);
+        }
+        gridLineZList.Clear();
     }
     public void SpawnGridX()
     {
@@ -339,7 +358,7 @@ public class GridController : MonoBehaviour
     }
     
     public void IncreaseYGridOffset()
-    {
+    { 
         PositiveGridOffsetAdjuster(ref gridOffsetY);
         UpdateGridAmountText(gridOffsetYText, gridOffsetY);
         SpawnGridY();
@@ -408,3 +427,4 @@ public class GridController : MonoBehaviour
         textToUpdate.text = $"{gridCount}";
     }
 }
+
